@@ -5,4 +5,43 @@
 # конструктор с тремя параметрами. Для каждого класса определите метод toString () так, чтобы он возвращал строку с названием класса и значениями всех полей объекта.
 
 
-class Lab7Ex3Main:
+class Superclass:
+    def __init__(self, text):
+        self._text = text
+
+    def display(self):
+        print(f"Class name: {type(self).__name__}, Text: {self._text}")
+
+
+class IntegerSubclass(Superclass):
+    def __init__(self, text, number):
+        super().__init__(text)
+        self._number = number
+
+    def display(self):
+        print(f"Class name: {type(self).__name__}, Text: {self._text}, Number: {self._number}")
+
+
+class CharSubclass(Superclass):
+    def __init__(self, text, char):
+        super().__init__(text)
+        self._char = char
+
+    def display(self):
+        print(f"Class name: {type(self).__name__}, Text: {self._text}, Char: {self._char}")
+
+
+obj1 = IntegerSubclass("Test text", 10)
+obj1.display()
+
+obj2 = CharSubclass("Another text", 'A')
+obj2.display()
+
+super_obj = Superclass("Super text")
+super_obj.display()
+
+super_obj = obj1
+super_obj.display()
+
+super_obj = obj2
+super_obj.display()
